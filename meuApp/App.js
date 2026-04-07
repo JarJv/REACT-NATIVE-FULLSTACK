@@ -53,7 +53,7 @@ export default function App() {
 
       <FlatList
         data={tarefas}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item, index) => String(item.id || item._id || index)}
         renderItem={({ item }) => (
           <View
             style={{
@@ -65,7 +65,7 @@ export default function App() {
             <Text>{item.titulo}</Text>
             <Button
               title="Deletar"
-              onPress={() => deletar(item.id)}
+              onPress={() => deletar(item.id || item._id)}
             />
           </View>
         )}
